@@ -17,6 +17,11 @@ struct Atm
         }
     }
 
+    int get_pin()
+    {
+        return myPin;
+    }
+
     void dispense(int amount)
     {
         if (amount != balance && amount != 0)
@@ -64,56 +69,85 @@ private:
 
 int main()
 {
-    Atm atm;
-    atm.set_name("Teda");
-    atm.dispense(20000);
-    cout << atm.get_balance() << endl;
-    // cout << "Welcome. Enter your 4 digit pin: ";
+    // Looping until user terminates to maintain state of data...
+        string input;
+        Atm atm;
+        atm.set_name("Teda");
+        atm.dispense(20000);
+        cout << atm.get_balance() << endl;
+
+       
     return 0;
 }
 
-// int funds()
-// {
-//     if (Atm.myPin >=0000 ){
+int funds()
+{
+    while (true)
+    {
+        Atm atm;
+        int pin;
 
-//     cin >> .myPin;
+        cout << "Enter your pin---> ";
+        cin >> pin;
+        atm.set_pin(pin);
 
-//     cout << " 1. Account Balance " <<"\n";
-//     cout << " 2. Cash Withdrawal " << "\n";
-//     cout << " 3. Transfer " <<"\n\n";
-//     cout << "Select an option ---> ";
-//     // cin >> savings ;
-//     }
-//     else {
-//         cout<< "incorrect" ;
-//     }
+        if (atm.get_pin() >= 0000)
+        {
+            cout << " 1. Account Balance "
+                 << "\n";
+            cout << " 2. Cash Withdrawal "
+                 << "\n";
+            cout << " 3. Transfer "
+                 << "\n\n";
+            cout << "Select an option ---> ";
+            // cin >> savings ;
+        }
+        else
+        {
+            cout << "Wrong PIN...";
+        }
 
-//      if( savings ==1){
-//         cout << "Enter your lastname--->" ;
-//         cin >> name ;
-//         current_balance = initial_balance;
-//         cout << " Your account balance is : " << '$'<< current_balance <<"\n";
-//      }
+        if (savings == 1)
+        {
+            cout << "Enter your first name---> ";
+            cin >> name;
+            current_balance = initial_balance;
+            cout << " Your account balance is : " << '$' << current_balance << "\n";
+        }
 
-//      else if ( savings ==2){
-//         cout << "Enter amount ---> ";
-//         cin >> dispense ;
-//         cout << " Withdrawal successful, please collect your cash. "<< "\n" ;
-//         current_balance = initial_balance - dispense;
-//         initial_balance = current_balance;
-//         cout << "Currrent balance is now ----> $" << current_balance << "\n";
+        else if (savings == 2)
+        {
+            cout << "Enter amount ---> ";
+            cin >> dispense;
+            cout << " Withdrawal successful, please collect your cash. "
+                 << "\n";
+            current_balance = initial_balance - dispense;
+            initial_balance = current_balance;
+            cout << "Currrent balance is now ----> $" << current_balance << "\n";
+        }
 
-//     }
+        else if (savings == 3)
+        {
+            cout << " Enter amount ";
+            cin >> trans;
+            cout << " Transaction Successful.";
+        }
 
-//     else if ( savings ==3){
-//         cout << " Enter amount ";
-//         cin >> trans ;
-//         cout << " Transaction Successful.";
+        else
+        {
+            cout << " Please enter the correct option. ";
+        }
 
-//     }
+         // Exit code...
+        cout << "Enter 'exit' to terminate ---> ";
+        getline(cin, input);
 
-//     else {
-//             cout << " Please enter the correct option. ";
+        if (input == "exit")
+        {
+            break;
+        }
+    }
+    cout << "Osheyyy! Rich kid!!!... Have a good day :)" << endl;
 
-//         }
-// }
+    }
+}
