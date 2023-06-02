@@ -113,9 +113,6 @@ void funds()
     // Looping until user terminates to maintain state of data...
     while (true)
     {
-        // Atm me{500};
-        // me.set_pin(2313);
-        // cout << me.get_pin();
 
         if (atm.get_pin() > 0)
         {
