@@ -78,9 +78,6 @@ int main()
 {
 
     funds();
-    // Atm me{500};
-    // me.set_pin(2313);
-    // cout << me.get_pin();
     return 0;
 }
 
