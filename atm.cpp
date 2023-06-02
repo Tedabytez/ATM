@@ -26,10 +26,10 @@ struct Atm
 
     void dispense(int amount)
     {
-        if (amount > balance)
-        {
-            cout << "lol... Viviiiiiid Imaginatiooooon!!!";
-        }
+        // if (amount > balance)
+        // {
+        //     cout << "lol... Viviiiiiid Imaginatiooooon!!!";
+        // }
         if (amount != balance && amount != 0)
         {
             balance = balance - amount;
