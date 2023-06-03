@@ -6,7 +6,7 @@ void funds();
 
 struct Atm
 {
-    Atm(double account_balance)
+    Atm(int account_balance)
     {
         if (!set_balance(account_balance))
         {
@@ -14,7 +14,7 @@ struct Atm
         }
     }
 
-    void set_pin(int pin)
+    void set_pin(int& pin)
     {
         myPin = pin;
     }
@@ -24,7 +24,7 @@ struct Atm
         return myPin;
     }
 
-    void dispense(int amount)
+    void dispense(int& amount)
     {
         // if (amount > balance)
         // {
@@ -47,7 +47,7 @@ struct Atm
         return balance;
     }
 
-    void set_name(string first_name)
+    void set_name(string& first_name)
     {
         name = first_name;
     }
