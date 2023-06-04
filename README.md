@@ -1,2 +1,2 @@
 # ATM program that can carry out basic transactions.
-# INSPIRED BY FEYI 😊
+# STARTED AND INSPIRED BY FEYI 😊
