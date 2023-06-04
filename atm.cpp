@@ -6,7 +6,7 @@ void funds();
 
 struct Atm
 {
-    Atm(int account_balance)
+    Atm(double account_balance)
     {
         if (!set_balance(account_balance))
         {
