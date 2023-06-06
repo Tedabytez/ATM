@@ -193,7 +193,7 @@ void funds()
             cout << "________________________________________________________________"
                  << "\n\n";
 
-            while (amount > atm.get_balance())
+            while (amount > atm.get_balance() || amount < 1)
             {
                 cout << "lol...\nViviiiiiid Imaginatiooooon!!! Insufficient funds :)"
                      << "\n";
@@ -219,10 +219,32 @@ void funds()
 
         else if (savings == 3)
         {
+            cout << "________________________________________________________________"
+                 << "\n\n";
             cout << "Enter amount to transfer ---> ";
             cin >> transfer;
+            while (transfer > atm.get_balance() || transfer < 0)
+            {
+                cout << "________________________________________________________________"
+                     << "\n\n";
+                cout << "Hehehe... Imagination want kill you :) \n\nFunds ain't sufficient homie... "
+                     << "\n";
+                cout << "________________________________________________________________"
+                     << "\n\n";
+                cout << "Current balance is $" << atm.get_balance() << "\n";
+                cout << "________________________________________________________________"
+                     << "\n\n";
+                cout << "Enter amount to transfer ---> ";
+                cin >> transfer;
+                cout << "________________________________________________________________"
+                     << "\n\n";
+            }
             atm.set_balance(atm.get_balance() - transfer);
+            cout << "________________________________________________________________"
+                 << "\n\n";
             cout << "Transaction Successful..." << endl;
+            cout << "________________________________________________________________"
+                 << "\n";
             cout << "Current balance is now ----> $" << atm.get_balance() << "\n\n";
             cout << "________________________________________________________________"
                  << "\n\n";
@@ -230,6 +252,8 @@ void funds()
 
         else if (savings == 4)
         {
+            cout << "________________________________________________________________"
+                 << "\n\n";
             cout << "Have a good day :)" << endl;
             cout << "________________________________________________________________"
                  << "\n\n";
