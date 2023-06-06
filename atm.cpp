@@ -102,16 +102,31 @@ void funds()
     cout << "Enter your pin---> ";
     cin >> pin;
     atm.set_pin(pin);
-    
-    while (atm.is_valid_pin(pin) && atm.validate_pin(pin) != true)
+
+    while (atm.is_valid_pin(pin) != true)
     {
-        cout << "Wrong Pin...  Please try again using the format '0000'  " << endl;
-            cout << "Enter your pin---> ";
-            cin >> pin;
-            atm.set_pin(pin);
+        cout << "________________________________________________________________"
+             << "\n\n";
+        cout << "Wrong PIN format...  Please try again using the format '0000'  " << endl;
+        cout << "________________________________________________________________"
+             << "\n\n";
+        cout << "Enter your PIN---> ";
+        cin >> pin;
+        atm.set_pin(pin);
         break;
     }
-    
+    while ((atm.validate_pin(pin) && atm.is_valid_pin(pin)) == false)
+    {
+        cout << "_______________________________________________________"
+                 << "\n\n";
+        cout << "Invalid PIN... Please try again"
+             << "\n";
+        cout << "_______________________________________________________"
+             << "\n\n";
+        cout << "Enter your PIN---> ";
+        cin >> pin;
+        cout << "\n";
+    }
 
     // while (cin.fail())
     // {
@@ -129,9 +144,24 @@ void funds()
     // Looping until user terminates to maintain state of data...
     while (true)
     {
+        cout << " 1. Account Balance "
+             << endl;
+        cout << " 2. Cash Withdrawal "
+             << endl;
+        cout << " 3. Transfer "
+             << endl;
+        cout << " 4. Exit " << endl;
+        cout << "Select an option ---> ";
 
-        if (atm.is_valid_pin(pin) && atm.validate_pin(pin))
+        cin >> savings;
+        while (cin.fail())
         {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "_______________________________________________________"
+                 << "\n\n";
+            cout << "Please enter a valid option."
+                 << "\n\n";
             cout << " 1. Account Balance "
                  << endl;
             cout << " 2. Cash Withdrawal "
@@ -140,31 +170,9 @@ void funds()
                  << endl;
             cout << " 4. Exit " << endl;
             cout << "Select an option ---> ";
-        }
-        else
-        {
-            cout << "Wrong Pin...  Please try again using the format '0000'  " << endl;
-            cout << "Enter your pin---> ";
-            cin >> pin;
-            atm.set_pin(pin);
-        }
-
-        cin >> savings;
-        while (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Please enter the correct option."
-                 << "\n\n";
-            cout << " 1. Account Balance "
-                 << endl;
-            cout << " 2. Cash Withdrawal "
-                 << endl;
-            cout << " 3. Transfer "
-                 << endl;
-            cout << "4. Exit " << endl;
-            cout << "Select an option ---> ";
             cin >> savings;
+            cout << "_______________________________________________________"
+                 << "\n\n";
         }
 
         if (savings == 1)
@@ -207,10 +215,12 @@ void funds()
             break;
         }
 
-        else
-        {
-            cout << "Please enter the correct option."
-                 << "\n\n";
-        }
+        // else
+        // {
+        //     // cout << "_______________________________________________________"
+        //     //      << "\n\n";
+        //     // cout << "Please enter a valid option."
+        //     //      << "\n\n";
+        // }
     }
 }
