@@ -41,7 +41,7 @@ struct Atm
     {
         // if (amount > balance)
         // {
-        //     cout << "lol... Viviiiiiid Imaginatiooooon!!!";
+        //
         // }
         if (amount != balance && amount != 0)
         {
@@ -72,9 +72,9 @@ struct Atm
 
 private:
     int savings;
+    int dispense_cash;
     double balance;
     double current_balance;
-    int dispense_cash;
     string pin;
     string userPin;
     string name;
@@ -97,55 +97,44 @@ void funds()
     string input;
     string pin;
 
-    Atm atm{init, "1738"};
+    Atm atm{init, "1122"};
 
     cout << "Enter your pin---> ";
     cin >> pin;
+    cout << "________________________________________________________________"
+         << "\n\n";
     atm.set_pin(pin);
 
     while (true)
     {
         if (atm.is_valid_pin(pin) != true)
         {
-            cout << "________________________________________________________________"
-                 << "\n\n";
             cout << "Wrong PIN format...  Please try again using the format '0000'  " << endl;
             cout << "________________________________________________________________"
                  << "\n\n";
             cout << "Enter your PIN---> ";
             cin >> pin;
+            cout << "________________________________________________________________"
+                 << "\n\n";
             atm.set_pin(pin);
         }
-    
+
         else if ((atm.validate_pin(pin) && atm.is_valid_pin(pin)) == false)
         {
-            cout << "_______________________________________________________"
-                 << "\n\n";
             cout << "Invalid PIN... Please try again"
                  << "\n";
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n\n";
             cout << "Enter your PIN---> ";
             cin >> pin;
-            cout << "\n";
+            cout << "________________________________________________________________"
+                 << "\n\n";
         }
-        else{
+        else
+        {
             break;
         }
     }
-
-    // while (cin.fail())
-    // {
-    //     cin.clear();
-    //     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    //     cout << "Invalid Pin... Please try again"
-    //          << "\n";
-    //     cout << "_________________________________"
-    //          << "\n";
-    //     cout << "Enter your pin---> ";
-    //     cin >> pin;
-    //     cout << "\n";
-    // }
 
     // Looping until user terminates to maintain state of data...
     while (true)
@@ -157,8 +146,8 @@ void funds()
         cout << " 3. Transfer "
              << endl;
         cout << " 4. Exit " << endl;
-        cout << "_______________________________________________________"
-             << "\n\n"; 
+        cout << "________________________________________________________________"
+             << "\n\n";
         cout << "Select an option ---> ";
 
         cin >> savings;
@@ -166,7 +155,7 @@ void funds()
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n\n";
             cout << "Please enter a valid option."
                  << "\n\n";
@@ -180,7 +169,7 @@ void funds()
             cout << "\n\n";
             cout << "Select an option ---> ";
             cin >> savings;
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n";
         }
 
@@ -188,20 +177,43 @@ void funds()
         {
             // cout << "Enter your first name---> ";
             // cin >> name;
-
+            cout << "________________________________________________________________"
+                 << "\n\n";
             cout << "Your account balance is : " << '$' << atm.get_balance() << endl;
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n\n";
         }
 
         else if (savings == 2)
         {
+            cout << "________________________________________________________________"
+                 << "\n\n";
             cout << "Enter amount ---> ";
             cin >> amount;
-            cout << "Osheyyy! Rich kid!!!... Withdrawal successful, please collect your cash. " << endl;
+            cout << "________________________________________________________________"
+                 << "\n\n";
+
+            while (amount > atm.get_balance())
+            {
+                cout << "lol...\nViviiiiiid Imaginatiooooon!!! Insufficient funds :)"
+                     << "\n";
+                cout << "________________________________________________________________"
+                     << "\n\n";
+                cout << "Current balance is $" << atm.get_balance() << "\n";
+                cout << "________________________________________________________________"
+                     << "\n\n";
+                cout << "Enter a VALID amount ---> ";
+                cin >> amount;
+                cout << "________________________________________________________________"
+                     << "\n\n";
+            }
+            cout << "Osheyyy! Rich kid!!!... Withdrawal successful, please collect your cash. "
+                 << "\n";
+            cout << "________________________________________________________________"
+                 << "\n\n";
             atm.set_balance(atm.get_balance() - amount);
             cout << "Currrent balance is now ----> $" << atm.get_balance() << endl;
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n\n";
         }
 
@@ -212,24 +224,16 @@ void funds()
             atm.set_balance(atm.get_balance() - transfer);
             cout << "Transaction Successful..." << endl;
             cout << "Current balance is now ----> $" << atm.get_balance() << "\n\n";
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n\n";
         }
 
         else if (savings == 4)
         {
             cout << "Have a good day :)" << endl;
-            cout << "_______________________________________________________"
+            cout << "________________________________________________________________"
                  << "\n\n";
             break;
         }
-
-        // else
-        // {
-        //     // cout << "_______________________________________________________"
-        //     //      << "\n\n";
-        //     // cout << "Please enter a valid option."
-        //     //      << "\n\n";
-        // }
     }
 }
