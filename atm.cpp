@@ -177,6 +177,7 @@ void funds()
             cout << " 3. Transfer "
                  << endl;
             cout << " 4. Exit " << endl;
+            cout << "\n\n";
             cout << "Select an option ---> ";
             cin >> savings;
             cout << "_______________________________________________________"
