@@ -103,29 +103,35 @@ void funds()
     cin >> pin;
     atm.set_pin(pin);
 
-    while (atm.is_valid_pin(pin) != true)
+    while (true)
     {
-        cout << "________________________________________________________________"
-             << "\n\n";
-        cout << "Wrong PIN format...  Please try again using the format '0000'  " << endl;
-        cout << "________________________________________________________________"
-             << "\n\n";
-        cout << "Enter your PIN---> ";
-        cin >> pin;
-        atm.set_pin(pin);
-        break;
-    }
-    while ((atm.validate_pin(pin) && atm.is_valid_pin(pin)) == false)
-    {
-        cout << "_______________________________________________________"
+        if (atm.is_valid_pin(pin) != true)
+        {
+            cout << "________________________________________________________________"
                  << "\n\n";
-        cout << "Invalid PIN... Please try again"
-             << "\n";
-        cout << "_______________________________________________________"
-             << "\n\n";
-        cout << "Enter your PIN---> ";
-        cin >> pin;
-        cout << "\n";
+            cout << "Wrong PIN format...  Please try again using the format '0000'  " << endl;
+            cout << "________________________________________________________________"
+                 << "\n\n";
+            cout << "Enter your PIN---> ";
+            cin >> pin;
+            atm.set_pin(pin);
+        }
+    
+        else if ((atm.validate_pin(pin) && atm.is_valid_pin(pin)) == false)
+        {
+            cout << "_______________________________________________________"
+                 << "\n\n";
+            cout << "Invalid PIN... Please try again"
+                 << "\n";
+            cout << "_______________________________________________________"
+                 << "\n\n";
+            cout << "Enter your PIN---> ";
+            cin >> pin;
+            cout << "\n";
+        }
+        else{
+            break;
+        }
     }
 
     // while (cin.fail())
@@ -151,6 +157,8 @@ void funds()
         cout << " 3. Transfer "
              << endl;
         cout << " 4. Exit " << endl;
+        cout << "_______________________________________________________"
+             << "\n\n"; 
         cout << "Select an option ---> ";
 
         cin >> savings;
@@ -172,7 +180,7 @@ void funds()
             cout << "Select an option ---> ";
             cin >> savings;
             cout << "_______________________________________________________"
-                 << "\n\n";
+                 << "\n";
         }
 
         if (savings == 1)
